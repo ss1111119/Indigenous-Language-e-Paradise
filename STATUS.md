@@ -16,6 +16,7 @@
 | Notebook | 筆數 |
 |---|---|
 | 情境族語 | 51,834 |
+| 族語短文 | 40,676 |
 | 生活會話篇 | 32,605 |
 | 閱讀書寫篇 | 30,862 |
 | 九階 | 18,395 |
@@ -28,7 +29,7 @@
 | 圖畫故事篇 | 2,326 |
 | Wawa 歌謠 | 2,190 |
 | 歌謠篇 | 1,543 |
-| **合計** | **184,837** |
+| **合計** | **225,513** |
 
 ---
 
@@ -49,7 +50,8 @@
 | `fetch_culture.py` | 文化篇 | ✅ | 42 方言 × 30 課，17,184 rows（textId.json + read_embed 內文 + 音檔） |
 | `fetch_parentchild.py` | 親子溝通 | ✅ | 42 方言 × 4 主題 × 4 小節，10,256 rows（句子 + 詞彙 + 音檔） |
 | `fetch_dialogue.py` | 情境族語 | ✅ | 42 方言 S1/S2/S3，51,834 rows（族語+中文+英文+音檔） |
-| `fetch_essay.py` | 族語短文 | ⏳ 待處理 | 結構同情境族語，ES112{did}.json + getEssay.php |
+| `fetch_essay.py` | 族語短文 | ✅ | 42 方言 S1/S2，40,676 rows（族語+中文+英文+音檔） |
+| `fetch_readingtext.py` | 閱讀文本 | ⏳ 待處理 | textId.json(6 tids/方言) + read_for_readingtext4.php + get_data.php 詞彙 |
 | — | Wawa 單詞 | ⏳ 待處理 | 需 Selenium + session cookie |
 
 ---
