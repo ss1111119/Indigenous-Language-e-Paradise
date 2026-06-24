@@ -1,0 +1,5 @@
+.spectra/
+openspec/.vector-search.db*
+corpus.db
+__pycache__/
+*.pyc
