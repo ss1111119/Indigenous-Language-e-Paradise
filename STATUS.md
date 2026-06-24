@@ -15,6 +15,7 @@
 
 | Notebook | 筆數 |
 |---|---|
+| 情境族語 | 51,834 |
 | 生活會話篇 | 32,605 |
 | 閱讀書寫篇 | 30,862 |
 | 九階 | 18,395 |
@@ -27,7 +28,7 @@
 | 圖畫故事篇 | 2,326 |
 | Wawa 歌謠 | 2,190 |
 | 歌謠篇 | 1,543 |
-| **合計** | **133,003** |
+| **合計** | **184,837** |
 
 ---
 
@@ -47,6 +48,8 @@
 | `fetch_reading.py` | 閱讀書寫篇 | ✅ | 42 方言 × 30 課，30,862 rows（XML 詞彙 + read_embed 內文 + 音檔） |
 | `fetch_culture.py` | 文化篇 | ✅ | 42 方言 × 30 課，17,184 rows（textId.json + read_embed 內文 + 音檔） |
 | `fetch_parentchild.py` | 親子溝通 | ✅ | 42 方言 × 4 主題 × 4 小節，10,256 rows（句子 + 詞彙 + 音檔） |
+| `fetch_dialogue.py` | 情境族語 | ✅ | 42 方言 S1/S2/S3，51,834 rows（族語+中文+英文+音檔） |
+| `fetch_essay.py` | 族語短文 | ⏳ 待處理 | 結構同情境族語，ES112{did}.json + getEssay.php |
 | — | Wawa 單詞 | ⏳ 待處理 | 需 Selenium + session cookie |
 
 ---
@@ -72,6 +75,10 @@
 | 文化篇（內文） | `read_embed.php?tid={tid}&mode=1` | HTML |
 | 親子溝通（tid 對照） | `https://web.klokah.tw/parent-child/json/tid.json` | JSON |
 | 親子溝通（內文） | `read_embed.php?tid={tid}&mode=1` | HTML |
+| 情境族語（tid 清單） | `https://web.klokah.tw/dialogue/json/SN112{did:02d}.json` | JSON |
+| 情境族語（對話） | `https://web.klokah.tw/dialogue/php/getDiaData.php?tid={tid}` | JSON |
+| 族語短文（tid 清單） | `https://web.klokah.tw/essay/json/ES112{did:02d}.json` | JSON |
+| 族語短文（短文） | `https://web.klokah.tw/essay/php/getEssay.php?tid={tid}` | JSON |
 | Wawa 單詞 | `https://web.klokah.tw/wawa/word.php?pid={pid}` + session cookie | HTML |
 
 ---
