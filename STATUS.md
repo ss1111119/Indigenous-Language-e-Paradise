@@ -23,7 +23,8 @@
 | Wawa 歌謠 | 2,190 |
 | 歌謠篇 | 1,543 |
 | 十二階(L10-12) | 6,051 |
-| **合計** | **72,375** |
+| 圖畫故事篇 | 2,326 |
+| **合計** | **74,701** |
 
 ---
 
@@ -39,6 +40,8 @@
 | `fetch_wawa_song.py` | Wawa 歌謠 | ✅ | 部分方言有資料（非全 42） |
 | `fetch_song.py` | 歌謠篇 | ✅ | 42 方言 × 10 首，1,543 rows |
 | `fetch_twelve.py` | 十二階(L10-12) | ✅ | 42 方言 × L10–12 × C1–10，6,051 rows |
+| `fetch_picturestory.py` | 圖畫故事篇 | ✅ | 42 方言 × 10 則，2,326 rows |
+| `fetch_reading.py` | 閱讀書寫篇 | ⏳ 待處理 | XML 詞彙 + textId.json + read_embed，結構已確認 |
 | — | Wawa 單詞 | ⏳ 待處理 | 需 Selenium + session cookie |
 
 ---
@@ -55,6 +58,11 @@
 | Wawa 歌謠 | `https://web.klokah.tw/wawa/php/get_song_data.php?pid={pid}&did={did}` | JSON |
 | 歌謠篇（歌名） | `https://web.klokah.tw/extension/song_data/xml/{did}/song.xml` | XML |
 | 歌謠篇（歌詞） | `https://web.klokah.tw/extension/song_practice/index.php?d={did}&s={song}&view=lyric` → `text/read_embed.php?tid={tid}&mode=1` | HTML |
+| 圖畫故事篇（故事名） | `https://web.klokah.tw/extension/ps_data/xml/{did}/story.xml` | XML |
+| 圖畫故事篇（故事文） | `https://web.klokah.tw/extension/ps_practice/index.php?d={did}&l={story}&view=story` → `read_embed.php?tid={tid}&mode=1` | HTML |
+| 閱讀書寫篇（詞彙+課名） | `https://web.klokah.tw/extension/rd_data/xml/{did}/reading.xml` | XML |
+| 閱讀書寫篇（tid 對照） | `https://web.klokah.tw/extension/rd_practice/textId.json` | JSON |
+| 閱讀書寫篇（文章） | `read_embed.php?tid={tid}&mode=1` | HTML |
 | Wawa 單詞 | `https://web.klokah.tw/wawa/word.php?pid={pid}` + session cookie | HTML |
 
 ---
