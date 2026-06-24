@@ -15,6 +15,7 @@ from common import get_conn, DIALECTS
 
 BASE_SONG  = "https://web.klokah.tw/extension/song_practice/index.php"
 BASE_LYRIC = "https://web.klokah.tw/text/read_embed.php"
+BASE_SOUND = "https://web.klokah.tw/text/sound"
 NOTEBOOK   = "歌謠篇"
 SOURCE     = "e樂園"
 SONGS      = range(1, 11)   # 每方言 10 首
@@ -53,19 +54,17 @@ def fetch_lyrics(tid: str) -> list[dict]:
 
     rows = []
     for sent in soup.select(".read-sentence.Ab"):
-        # 取族語 tokens，排除巢狀的 Ch div
         words = [
             w.get_text(strip=True)
             for w in sent.find_all("div", class_="word")
         ]
         ab = " ".join(w for w in words if w)
-
-        # 取中文（嵌在 Ab 內的 Ch div）
         ch_div = sent.find("div", class_="read-sentence")
         ch = ch_div.get_text(strip=True) if ch_div else ""
-
+        audio_id = ch_div.get("data-value", "") if ch_div else ""
+        audio = f"{BASE_SOUND}/{tid}/{audio_id}.mp3" if audio_id else ""
         if ab:
-            rows.append({"text_ab": ab, "text_ch": ch})
+            rows.append({"text_ab": ab, "text_ch": ch, "audio": audio})
     return rows
 
 
@@ -99,11 +98,11 @@ def main():
             conn.executemany(
                 """INSERT INTO corpus
                    (source, notebook, dialect_id, dialect, unit,
-                    text_ab, text_ch, text_en, ipa, is_vowel)
-                   VALUES (?,?,?,?,?,?,?,?,?,?)""",
+                    text_ab, text_ch, text_en, ipa, is_vowel, audio)
+                   VALUES (?,?,?,?,?,?,?,?,?,?,?)""",
                 [
                     (SOURCE, NOTEBOOK, did, dname, unit,
-                     r["text_ab"], r["text_ch"], "", "", "")
+                     r["text_ab"], r["text_ch"], "", "", "", r.get("audio", ""))
                     for r in rows
                 ]
             )

@@ -15,6 +15,7 @@ from common import get_conn, DIALECTS
 BASE_XML   = "https://web.klokah.tw/extension/rd_data/xml/{}/reading.xml"
 TEXTID_URL = "https://web.klokah.tw/extension/rd_practice/textId.json"
 BASE_EMBED = "https://web.klokah.tw/text/read_embed.php"
+BASE_SOUND = "https://web.klokah.tw/text/sound"
 NOTEBOOK   = "閱讀書寫篇"
 SOURCE     = "e樂園"
 MAX_VOCAB  = 20
@@ -77,8 +78,10 @@ def fetch_article_sentences(tid: int) -> list[dict]:
         ab = " ".join(w for w in words if w)
         ch_div = sent.find("div", class_="read-sentence")
         ch = ch_div.get_text(strip=True) if ch_div else ""
+        audio_id = ch_div.get("data-value", "") if ch_div else ""
+        audio = f"{BASE_SOUND}/{tid}/{audio_id}.mp3" if audio_id else ""
         if ab:
-            rows.append({"text_ab": ab, "text_ch": ch})
+            rows.append({"text_ab": ab, "text_ch": ch, "audio": audio})
     return rows
 
 
@@ -122,12 +125,12 @@ def main():
             conn.executemany(
                 """INSERT INTO corpus
                    (source, notebook, dialect_id, dialect, unit,
-                    text_ab, text_ch, text_en, ipa, is_vowel)
-                   VALUES (?,?,?,?,?,?,?,?,?,?)""",
+                    text_ab, text_ch, text_en, ipa, is_vowel, audio)
+                   VALUES (?,?,?,?,?,?,?,?,?,?,?)""",
                 [
                     (SOURCE, NOTEBOOK, did, dname,
                      r["unit"], r["text_ab"], r["text_ch"],
-                     r.get("text_en", ""), r.get("ipa", ""), r.get("is_vowel", ""))
+                     r.get("text_en", ""), r.get("ipa", ""), r.get("is_vowel", ""), r.get("audio", ""))
                     for r in all_rows
                 ]
             )

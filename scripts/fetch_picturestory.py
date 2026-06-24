@@ -15,6 +15,7 @@ from common import get_conn, DIALECTS
 
 BASE_STORY = "https://web.klokah.tw/extension/ps_practice/index.php"
 BASE_EMBED = "https://web.klokah.tw/text/read_embed.php"
+BASE_SOUND = "https://web.klokah.tw/text/sound"
 NOTEBOOK   = "圖畫故事篇"
 SOURCE     = "e樂園"
 STORIES    = range(1, 11)  # 每方言 10 則
@@ -56,8 +57,10 @@ def fetch_sentences(tid: str) -> list[dict]:
         ab = " ".join(w for w in words if w)
         ch_div = sent.find("div", class_="read-sentence")
         ch = ch_div.get_text(strip=True) if ch_div else ""
+        audio_id = ch_div.get("data-value", "") if ch_div else ""
+        audio = f"{BASE_SOUND}/{tid}/{audio_id}.mp3" if audio_id else ""
         if ab:
-            rows.append({"text_ab": ab, "text_ch": ch})
+            rows.append({"text_ab": ab, "text_ch": ch, "audio": audio})
     return rows
 
 
@@ -87,11 +90,11 @@ def main():
             conn.executemany(
                 """INSERT INTO corpus
                    (source, notebook, dialect_id, dialect, unit,
-                    text_ab, text_ch, text_en, ipa, is_vowel)
-                   VALUES (?,?,?,?,?,?,?,?,?,?)""",
+                    text_ab, text_ch, text_en, ipa, is_vowel, audio)
+                   VALUES (?,?,?,?,?,?,?,?,?,?,?)""",
                 [
                     (SOURCE, NOTEBOOK, did, dname, unit,
-                     r["text_ab"], r["text_ch"], "", "", "")
+                     r["text_ab"], r["text_ch"], "", "", "", r.get("audio", ""))
                     for r in rows
                 ]
             )

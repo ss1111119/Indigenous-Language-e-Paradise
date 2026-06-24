@@ -18,7 +18,8 @@ CREATE TABLE IF NOT EXISTS corpus (
     text_ch    TEXT,            -- 中文
     text_en    TEXT,            -- 英文（若有）
     ipa        TEXT,            -- IPA（字母篇）
-    is_vowel   TEXT             -- 'y'/'n'（字母篇）
+    is_vowel   TEXT,            -- 'y'/'n'（字母篇）
+    audio      TEXT             -- 音檔 URL（read_embed 系列）
 );
 
 CREATE INDEX IF NOT EXISTS idx_notebook   ON corpus(notebook);
