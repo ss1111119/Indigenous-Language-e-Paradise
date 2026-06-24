@@ -16,15 +16,17 @@
 | Notebook | 筆數 |
 |---|---|
 | 生活會話篇 | 32,605 |
+| 閱讀書寫篇 | 30,862 |
 | 九階 | 18,395 |
+| 文化篇 | 17,196 |
+| 十二階(L10-12) | 6,051 |
 | 字母篇 | 4,825 |
 | 主題式掛圖 | 4,248 |
 | Wawa 生活會話 | 2,518 |
+| 圖畫故事篇 | 2,326 |
 | Wawa 歌謠 | 2,190 |
 | 歌謠篇 | 1,543 |
-| 十二階(L10-12) | 6,051 |
-| 圖畫故事篇 | 2,326 |
-| **合計** | **74,701** |
+| **合計** | **122,759** |
 
 ---
 
@@ -41,7 +43,8 @@
 | `fetch_song.py` | 歌謠篇 | ✅ | 42 方言 × 10 首，1,543 rows |
 | `fetch_twelve.py` | 十二階(L10-12) | ✅ | 42 方言 × L10–12 × C1–10，6,051 rows |
 | `fetch_picturestory.py` | 圖畫故事篇 | ✅ | 42 方言 × 10 則，2,326 rows |
-| `fetch_reading.py` | 閱讀書寫篇 | ⏳ 待處理 | XML 詞彙 + textId.json + read_embed，結構已確認 |
+| `fetch_reading.py` | 閱讀書寫篇 | ✅ | 42 方言 × 30 課，30,862 rows（XML 詞彙 + read_embed 內文） |
+| `fetch_culture.py` | 文化篇 | ✅ | 42 方言 × 30 課，17,196 rows（textId.json + read_embed 內文） |
 | — | Wawa 單詞 | ⏳ 待處理 | 需 Selenium + session cookie |
 
 ---
@@ -63,6 +66,8 @@
 | 閱讀書寫篇（詞彙+課名） | `https://web.klokah.tw/extension/rd_data/xml/{did}/reading.xml` | XML |
 | 閱讀書寫篇（tid 對照） | `https://web.klokah.tw/extension/rd_practice/textId.json` | JSON |
 | 閱讀書寫篇（文章） | `read_embed.php?tid={tid}&mode=1` | HTML |
+| 文化篇（tid 對照） | `https://web.klokah.tw/extension/cu_practice/textId.json` | JSON |
+| 文化篇（內文） | `read_embed.php?tid={tid}&mode=1` | HTML |
 | Wawa 單詞 | `https://web.klokah.tw/wawa/word.php?pid={pid}` + session cookie | HTML |
 
 ---
