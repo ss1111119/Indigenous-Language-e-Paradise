@@ -11,7 +11,7 @@
 | `corpus.db` | SQLite + FTS5，本地執行，不 commit |
 | `scripts/` | 所有 fetch script，可重跑 |
 
-**corpus.db 目前筆數（2026-06-24）**
+**corpus.db 目前筆數（2026-06-25）**
 
 | Notebook | 筆數 |
 |---|---|
@@ -33,9 +33,10 @@
 | 圖畫故事篇 | 2,326 |
 | Wawa 遊戲 | 4,515 |
 | Wawa 單詞 | 2,482 |
+| 族語新聞閱讀 | 5,807 |
 | Wawa 歌謠 | 2,190 |
 | 歌謠篇 | 1,543 |
-| **合計** | **331,165** |
+| **合計** | **336,972** |
 
 ---
 
@@ -63,6 +64,7 @@
 | `fetch_lima.py` | LIMA 有聲書 | ✅ | 42 方言 × 7 課 × 4 模式，11,601 rows（vocabulary+story+conversation+question+音檔）|
 | `fetch_sp_junior.py` | 句型篇國中版 | ✅ | 42 方言 × 40 類別（8 題型），30,354 rows（XML 解析，含詞彙/句型/對話/配合題）|
 | `fetch_sp_senior.py` | 句型篇高中版 | ✅ | 42 方言 × 47 類別（8 題型），44,912 rows（XML 解析，含選擇題三/唸唸看等高中特有題型）|
+| `fetch_readnews.py` | 族語新聞閱讀 | ✅ | 1,587 篇文章（非全 42 方言），5,807 rows（標題 + 句子對，getNews.php 分頁 + BeautifulSoup 解析）|
 
 ---
 
@@ -92,6 +94,8 @@
 | 族語短文（tid 清單） | `https://web.klokah.tw/essay/json/ES112{did:02d}.json` | JSON |
 | 族語短文（短文） | `https://web.klokah.tw/essay/php/getEssay.php?tid={tid}` | JSON |
 | Wawa 單詞 | `https://web.klokah.tw/wawa/word.php?pid={pid}` + session cookie | HTML |
+| 族語新聞閱讀（文章清單） | `https://web.klokah.tw/readnews/php/getNews.php?d=0&t=&p={page}` | JSON |
+| 族語新聞閱讀（文章內文） | `https://web.klokah.tw/readnews/read.php?tid={id}` | HTML |
 
 ---
 
