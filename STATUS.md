@@ -19,6 +19,7 @@
 | LIMA 有聲書 | 11,601 |
 | 族語短文 | 40,676 |
 | 生活會話篇 | 32,605 |
+| 句型篇國中版 | 30,354 |
 | 閱讀書寫篇 | 30,862 |
 | 九階 | 18,395 |
 | 文化篇 | 17,184 |
@@ -33,7 +34,7 @@
 | Wawa 單詞 | 2,482 |
 | Wawa 歌謠 | 2,190 |
 | 歌謠篇 | 1,543 |
-| **合計** | **255,899** |
+| **合計** | **286,253** |
 
 ---
 
@@ -59,6 +60,7 @@
 | `fetch_wawa_word.py` | Wawa 單詞 | ✅ | 42 方言 × 6 主題，2,482 rows（Session + set_prefer_dialect POST + .showword HTML 解析）|
 | `fetch_wawa_game.py` | Wawa 遊戲 | ✅ | 42 方言 × 6 主題，4,515 rows（get_game_data.php JSON，問題+答對+答錯回應+音檔）|
 | `fetch_lima.py` | LIMA 有聲書 | ✅ | 42 方言 × 7 課 × 4 模式，11,601 rows（vocabulary+story+conversation+question+音檔）|
+| `fetch_sp_junior.py` | 句型篇國中版 | ✅ | 42 方言 × 40 類別（8 題型），30,354 rows（XML 解析，含詞彙/句型/對話/配合題）|
 
 ---
 
