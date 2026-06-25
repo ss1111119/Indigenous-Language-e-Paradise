@@ -16,6 +16,7 @@
 | Notebook | 筆數 |
 |---|---|
 | 情境族語 | 51,834 |
+| LIMA 有聲書 | 11,601 |
 | 族語短文 | 40,676 |
 | 生活會話篇 | 32,605 |
 | 閱讀書寫篇 | 30,862 |
@@ -32,7 +33,7 @@
 | Wawa 單詞 | 2,482 |
 | Wawa 歌謠 | 2,190 |
 | 歌謠篇 | 1,543 |
-| **合計** | **244,298** |
+| **合計** | **255,899** |
 
 ---
 
@@ -57,6 +58,7 @@
 | `fetch_readingtext.py` | 閱讀文本 | ✅ | 42 方言 × 6 課，11,788 rows（文章句子 + 詞彙例句 + 音檔） |
 | `fetch_wawa_word.py` | Wawa 單詞 | ✅ | 42 方言 × 6 主題，2,482 rows（Session + set_prefer_dialect POST + .showword HTML 解析）|
 | `fetch_wawa_game.py` | Wawa 遊戲 | ✅ | 42 方言 × 6 主題，4,515 rows（get_game_data.php JSON，問題+答對+答錯回應+音檔）|
+| `fetch_lima.py` | LIMA 有聲書 | ✅ | 42 方言 × 7 課 × 4 模式，11,601 rows（vocabulary+story+conversation+question+音檔）|
 
 ---
 
