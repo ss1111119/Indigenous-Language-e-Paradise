@@ -28,9 +28,10 @@
 | 主題式掛圖 | 4,248 |
 | Wawa 生活會話 | 2,518 |
 | 圖畫故事篇 | 2,326 |
+| Wawa 單詞 | 2,482 |
 | Wawa 歌謠 | 2,190 |
 | 歌謠篇 | 1,543 |
-| **合計** | **237,301** |
+| **合計** | **239,783** |
 
 ---
 
@@ -53,8 +54,7 @@
 | `fetch_dialogue.py` | 情境族語 | ✅ | 42 方言 S1/S2/S3，51,834 rows（族語+中文+英文+音檔） |
 | `fetch_essay.py` | 族語短文 | ✅ | 42 方言 S1/S2，40,676 rows（族語+中文+英文+音檔） |
 | `fetch_readingtext.py` | 閱讀文本 | ✅ | 42 方言 × 6 課，11,788 rows（文章句子 + 詞彙例句 + 音檔） |
-| `fetch_wawa_word.py` | Wawa 單詞 | ⏳ 待處理 | requests.Session() + set_prefer_dialect.php POST + word.php HTML 解析 |
-| — | Wawa 單詞 | ⏳ 待處理 | 需 Selenium + session cookie |
+| `fetch_wawa_word.py` | Wawa 單詞 | ✅ | 42 方言 × 6 主題，2,482 rows（Session + set_prefer_dialect POST + .showword HTML 解析）|
 
 ---
 
